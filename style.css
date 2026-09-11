@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Darker Grotesque', sans-serif;
+  font-weight: 300;
+  color:aliceblue;
+  background-image: url('public/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  margin-top: 0;
+}
