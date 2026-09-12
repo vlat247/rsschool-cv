@@ -74,10 +74,7 @@ h1 {
   left: 50%;
   width: min(100vw, 140.625dvh);
   aspect-ratio: 1440 / 1024;
-  overflow: hidden;
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.08)),
-    url("public/bg.png") center / cover no-repeat;
+  overflow: visible;
   container-type: inline-size;
   transform: translate(-50%, -50%);
 }
@@ -85,8 +82,8 @@ h1 {
 .site-header {
   position: absolute;
   top: 0;
-  right: 3cqw;
-  left: 3cqw;
+  right: calc((100cqw - 100vw) / 2 + 3vw);
+  left: calc((100cqw - 100vw) / 2 + 3vw);
   z-index: 3;
   height: 7.3cqw;
   border-bottom: 1px solid var(--line);
@@ -133,7 +130,7 @@ h1 {
 .hero-intro {
   position: absolute;
   top: 9.35cqw;
-  left: 40.5cqw;
+  left: 39.5cqw;
   z-index: 2;
   width: 52.9cqw;
 }
@@ -144,6 +141,7 @@ h1 {
   line-height: 1;
   letter-spacing: -0.02em;
   text-wrap: balance;
+  transform: translateX(-1.25cqw);
 }
 
 .hero-intro p {
@@ -152,14 +150,18 @@ h1 {
   line-height: 1.35;
 }
 
+.hero-intro p:last-child {
+  white-space: nowrap;
+}
+
 .hero-intro .role {
   margin-bottom: 0.45cqw;
 }
 
 .availability {
   position: absolute;
-  top: 24.65cqw;
-  left: 40.55cqw;
+  top: 25.05cqw;
+  left: 39.55cqw;
   z-index: 3;
 }
 
@@ -171,7 +173,7 @@ h1 {
 }
 
 .availability p {
-  margin: 0.8cqw 0 0;
+  margin: 0.55cqw 0 0;
   font-size: 1.42cqw;
   font-weight: 600;
 }
@@ -179,7 +181,7 @@ h1 {
 .quote {
   position: absolute;
   top: 35.2cqw;
-  left: 38.85cqw;
+  left: 35.5cqw;
   z-index: 3;
   width: 20.5cqw;
   margin-bottom: 0;
@@ -197,12 +199,23 @@ h1 {
 }
 
 .collage__image,
+.collage__link,
 .scribble {
   position: absolute;
 }
 
 .collage__image {
   object-fit: cover;
+}
+
+.collage__image:not(.character) {
+  transition: transform 160ms ease-out;
+}
+
+.collage__link .collage__image {
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .photo-main {
@@ -318,9 +331,9 @@ h1 {
 
 .hero-links {
   position: absolute;
-  right: 4.25cqw;
+  right: calc((100cqw - 100vw) / 2 + 4.25vw);
   bottom: 5.35cqw;
-  left: 4.3cqw;
+  left: calc((100cqw - 100vw) / 2 + 4.3vw);
   z-index: 3;
   display: flex;
   justify-content: space-between;
@@ -331,9 +344,9 @@ h1 {
 
 .hero-meta {
   position: absolute;
-  right: 3cqw;
+  right: calc((100cqw - 100vw) / 2 + 3vw);
   bottom: 0;
-  left: 3cqw;
+  left: calc((100cqw - 100vw) / 2 + 3vw);
   z-index: 3;
   display: flex;
   align-items: center;
@@ -351,5 +364,15 @@ h1 {
   a:hover {
     color: var(--muted);
     text-decoration: underline;
+  }
+
+  .collage__image:not(.character):hover {
+    transform: scale(1.025);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .collage__image:not(.character) {
+    transition: none;
   }
 }
