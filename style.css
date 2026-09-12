@@ -372,10 +372,103 @@ h1 {
   margin-left: auto;
 }
 
+.work-ethic-page {
+  position: absolute;
+  top: 10.2cqw;
+  right: 4.3cqw;
+  left: 4.3cqw;
+  z-index: 4;
+  display: none;
+}
+
+.design-canvas.is-work-ethic .signature,
+.design-canvas.is-work-ethic .signature-arrow,
+.design-canvas.is-work-ethic .hero-intro,
+.design-canvas.is-work-ethic .availability,
+.design-canvas.is-work-ethic .quote,
+.design-canvas.is-work-ethic .collage,
+.design-canvas.is-work-ethic .hero-links {
+  display: none;
+}
+
+.design-canvas.is-work-ethic .work-ethic-page {
+  display: block;
+  animation: reveal-work-ethic 160ms ease-out;
+}
+
+.work-ethic-page__navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5cqw;
+  font-size: 1.55cqw;
+}
+
+.work-ethic-page__navigation p {
+  margin-bottom: 0;
+}
+
+.work-ethic-page__navigation a {
+  color: inherit;
+  font-size: 3.2cqw;
+  line-height: 0.6;
+  text-decoration: none;
+}
+
+.work-ethic-page__intro {
+  max-width: 75cqw;
+  margin-bottom: 3.4cqw;
+  font-size: 3.15cqw;
+  line-height: 1.05;
+}
+
+.work-ethic-page__principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6cqw;
+}
+
+.work-ethic-page__principles section {
+  border-top: 1px solid var(--line);
+}
+
+.work-ethic-page__principles h2 {
+  max-width: 34cqw;
+  margin: 1.3cqw 0;
+  font-size: 2.55cqw;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.work-ethic-page__principles ul {
+  margin-bottom: 0;
+  padding-left: 1.2em;
+  font-size: 1.52cqw;
+  line-height: 1.35;
+}
+
+.work-ethic-page__principles li + li {
+  margin-top: 0.4em;
+}
+
+@keyframes reveal-work-ethic {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @media (hover: hover) {
   a:hover {
     color: var(--muted);
     text-decoration: underline;
+  }
+
+  .work-ethic-page__navigation a:hover {
+    color: inherit;
+    text-decoration: none;
   }
 
   .collage__image:not(.character):hover {
@@ -386,5 +479,9 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .collage__image:not(.character) {
     transition: none;
+  }
+
+  .design-canvas.is-work-ethic .work-ethic-page {
+    animation: none;
   }
 }

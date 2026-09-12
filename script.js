@@ -16,6 +16,21 @@ const updateAstanaTime = () => {
 updateAstanaTime();
 window.setInterval(updateAstanaTime, 30000);
 
+const designCanvas = document.querySelector(".design-canvas");
+const defaultPageTitle = document.title;
+
+const updatePageView = () => {
+  const isWorkEthicPage = window.location.hash === "#work-ethic";
+
+  designCanvas?.classList.toggle("is-work-ethic", isWorkEthicPage);
+  document.title = isWorkEthicPage
+    ? "My Work Ethic — Vladislav Solomonov"
+    : defaultPageTitle;
+};
+
+updatePageView();
+window.addEventListener("hashchange", updatePageView);
+
 const ditherCanvas = document.querySelector(".dither-background");
 
 if (ditherCanvas) {
