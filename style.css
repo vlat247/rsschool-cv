@@ -372,6 +372,18 @@ h1 {
   margin-left: auto;
 }
 
+.rs-course {
+  display: flex;
+  gap: 0.65cqw;
+  align-items: center;
+}
+
+.rs-course img {
+  width: 4cqw;
+  height: auto;
+  transform: translateY(0.18cqw);
+}
+
 .projects-page,
 .work-ethic-page {
   position: absolute;
@@ -382,7 +394,6 @@ h1 {
   display: none;
 }
 
-.design-canvas.is-secondary-page .signature,
 .design-canvas.is-secondary-page .signature-arrow,
 .design-canvas.is-secondary-page .hero-intro,
 .design-canvas.is-secondary-page .availability,
