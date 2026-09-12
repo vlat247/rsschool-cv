@@ -17,15 +17,63 @@ updateAstanaTime();
 window.setInterval(updateAstanaTime, 30000);
 
 const designCanvas = document.querySelector(".design-canvas");
+const designSlides = [...document.querySelectorAll("[data-design-slide]")];
+const designSelectors = [...document.querySelectorAll("[data-design-index]")];
 const defaultPageTitle = document.title;
+let activeDesignIndex = 0;
+
+const showDesign = (selectedIndex, shouldPlayVideo = true) => {
+  activeDesignIndex = selectedIndex;
+
+  designSlides.forEach((slide, index) => {
+    const isActive = index === selectedIndex;
+    const video = slide.querySelector("video");
+
+    slide.hidden = !isActive;
+    slide.classList.toggle("is-active", isActive);
+
+    if (video) {
+      if (isActive && shouldPlayVideo) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    }
+  });
+
+  designSelectors.forEach((selector, index) => {
+    const isActive = index === selectedIndex;
+
+    selector.classList.toggle("is-active", isActive);
+    selector.setAttribute("aria-pressed", String(isActive));
+  });
+};
+
+designSelectors.forEach((selector) => {
+  selector.addEventListener("click", () => {
+    showDesign(Number(selector.dataset.designIndex));
+  });
+});
 
 const updatePageView = () => {
   const isWorkEthicPage = window.location.hash === "#work-ethic";
+  const isProjectsPage = window.location.hash === "#projects";
 
+  designCanvas?.classList.toggle(
+    "is-secondary-page",
+    isWorkEthicPage || isProjectsPage,
+  );
   designCanvas?.classList.toggle("is-work-ethic", isWorkEthicPage);
-  document.title = isWorkEthicPage
-    ? "My Work Ethic — Vladislav Solomonov"
-    : defaultPageTitle;
+  designCanvas?.classList.toggle("is-projects", isProjectsPage);
+  showDesign(activeDesignIndex, isProjectsPage);
+
+  if (isWorkEthicPage) {
+    document.title = "My Work Ethic — Vladislav Solomonov";
+  } else if (isProjectsPage) {
+    document.title = "Projects — Vladislav Solomonov";
+  } else {
+    document.title = defaultPageTitle;
+  }
 };
 
 updatePageView();

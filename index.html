@@ -66,14 +66,119 @@
       </div>
 
       <div class="hero-links">
-        <a href="https://github.com/vlat247?tab=repositories" target="_blank" rel="noopener noreferrer">View projects <span aria-hidden="true">— &gt;</span></a>
+        <a href="#projects">View projects <span aria-hidden="true">— &gt;</span></a>
         <a href="#work-ethic">My work ethic</a>
       </div>
+
+      <section class="projects-page" aria-labelledby="projects-title">
+        <div class="projects-page__navigation">
+          <h2 id="projects-title">Projects &amp; CV</h2>
+          <a class="page-back" href="#" aria-label="Back to collage">-&gt;</a>
+        </div>
+
+        <div class="projects-page__layout">
+          <div class="projects-page__cv">
+            <section class="cv-block">
+              <h3>Programs &amp; Community</h3>
+
+              <article class="cv-entry">
+                <div class="cv-entry__heading">
+                  <h4>Hack Club — Neighborhood Program</h4>
+                  <time datetime="2025-06">Summer 2025</time>
+                </div>
+                <a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">hackclub.com</a>
+                <ul>
+                  <li>Logged 75+ documented coding hours, qualifying for a scholarship flight to an in-person US building event.</li>
+                  <li>Built <a href="https://github.com/vlat247/pomodoro-tracker" target="_blank" rel="noopener noreferrer">Pomodoro Tracker</a> as the program deliverable.</li>
+                </ul>
+              </article>
+
+              <article class="cv-entry">
+                <div class="cv-entry__heading">
+                  <h4>Hack Club — General Member</h4>
+                  <time datetime="2025">2025–present</time>
+                </div>
+                <a href="https://hackclub.com/" target="_blank" rel="noopener noreferrer">hackclub.com</a>
+                <ul>
+                  <li>Part of Hack Club's global network of student builders, sharing projects and peer code reviews.</li>
+                </ul>
+              </article>
+            </section>
+
+            <div class="cv-stack">
+              <section class="cv-block">
+                <h3>Technical Skills</h3>
+                <ul class="skills-list">
+                  <li><strong>Languages:</strong> TypeScript, JavaScript (ES6+), HTML5, CSS3, Swift (learning)</li>
+                  <li><strong>Tools &amp; platforms:</strong> Git, GitHub, Node.js, Telegram Bot API, Next.js, VS Code, npm</li>
+                  <li><strong>Currently learning:</strong> React, backend fundamentals, iOS development with SwiftUI</li>
+                </ul>
+              </section>
+
+              <section class="cv-block education">
+                <h3>Education &amp; English</h3>
+                <p><strong>Nazarbayev University</strong> · Current<br>Computer Science undergraduate · Astana, Kazakhstan</p>
+                <p><strong>IQanat High School of Burabay</strong> · 2023–2025<br>Selected from 40,000+ applicants nationwide.</p>
+                <p><strong>English:</strong> C1 · IELTS 7.5</p>
+              </section>
+            </div>
+
+            <section class="cv-block code-example">
+              <h3>Code Example</h3>
+              <p>LeetCode — Two Sum</p>
+              <pre><code>const twoSum = (numbers, target) =&gt; {
+  const positions = new Map();
+  for (let index = 0; index &lt; numbers.length; index += 1) {
+    const needed = target - numbers[index];
+    if (positions.has(needed)) {
+      return [positions.get(needed), index];
+    }
+    positions.set(numbers[index], index);
+  }
+  return [];
+};</code></pre>
+            </section>
+          </div>
+
+          <section class="projects-page__designs" aria-labelledby="designs-title">
+            <h3 id="designs-title">Design Work</h3>
+
+            <ul class="design-viewer">
+              <li class="design-slide is-active" data-design-slide>
+                <figure>
+                  <img src="public/designs/vision.png" alt="Vision website interface design">
+                  <figcaption>Vision — interface concept</figcaption>
+                </figure>
+              </li>
+              <li class="design-slide" data-design-slide hidden>
+                <figure>
+                  <img src="public/designs/honda.png" alt="Honda editorial website interface design">
+                  <figcaption>Honda — editorial concept</figcaption>
+                </figure>
+              </li>
+              <li class="design-slide" data-design-slide hidden>
+                <figure>
+                  <video autoplay loop muted playsinline aria-label="Motion interface design">
+                    <source src="public/designs/motion-design.mp4" type="video/mp4">
+                  </video>
+                  <figcaption>Hero's Journey — motion concept</figcaption>
+                </figure>
+              </li>
+            </ul>
+
+            <div class="design-selector" aria-label="Choose a design">
+              <button class="is-active" type="button" data-design-index="0" aria-pressed="true">01 Vision</button>
+              <button type="button" data-design-index="1" aria-pressed="false">02 Honda</button>
+              <button type="button" data-design-index="2" aria-pressed="false">03 Motion</button>
+            </div>
+          </section>
+        </div>
+      </section>
 
       <section class="work-ethic-page" aria-labelledby="work-ethic-title">
         <div class="work-ethic-page__navigation">
           <p>My work ethic</p>
-          <a href="#" aria-label="Back to collage">-&gt;</a>
+          <a class="page-back" href="#" aria-label="Back to collage">-&gt;</a>
         </div>
 
         <p class="work-ethic-page__intro">

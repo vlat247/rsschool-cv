@@ -372,6 +372,7 @@ h1 {
   margin-left: auto;
 }
 
+.projects-page,
 .work-ethic-page {
   position: absolute;
   top: 10.2cqw;
@@ -381,19 +382,204 @@ h1 {
   display: none;
 }
 
-.design-canvas.is-work-ethic .signature,
-.design-canvas.is-work-ethic .signature-arrow,
-.design-canvas.is-work-ethic .hero-intro,
-.design-canvas.is-work-ethic .availability,
-.design-canvas.is-work-ethic .quote,
-.design-canvas.is-work-ethic .collage,
-.design-canvas.is-work-ethic .hero-links {
+.design-canvas.is-secondary-page .signature,
+.design-canvas.is-secondary-page .signature-arrow,
+.design-canvas.is-secondary-page .hero-intro,
+.design-canvas.is-secondary-page .availability,
+.design-canvas.is-secondary-page .quote,
+.design-canvas.is-secondary-page .collage,
+.design-canvas.is-secondary-page .hero-links {
   display: none;
 }
 
+.design-canvas.is-projects .projects-page,
 .design-canvas.is-work-ethic .work-ethic-page {
   display: block;
-  animation: reveal-work-ethic 160ms ease-out;
+  animation: reveal-page 160ms ease-out;
+}
+
+.projects-page__navigation {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.projects-page__navigation h2 {
+  margin: 0;
+  font-size: 2.8cqw;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.projects-page__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 3cqw;
+  margin-top: 1.6cqw;
+}
+
+.projects-page__cv {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5cqw 2cqw;
+  align-content: start;
+}
+
+.cv-block {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+}
+
+.cv-block h3 {
+  margin: 0.8cqw 0 0.7cqw;
+  font-size: 1.48cqw;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.cv-entry + .cv-entry {
+  margin-top: 1cqw;
+}
+
+.cv-entry__heading {
+  display: flex;
+  gap: 0.7cqw;
+  justify-content: space-between;
+}
+
+.cv-entry h4,
+.cv-entry time,
+.cv-entry p,
+.cv-entry ul,
+.skills-list,
+.education p,
+.code-example p {
+  font-size: 1.2cqw;
+  line-height: 1.22;
+}
+
+.cv-entry h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.cv-entry time {
+  flex: none;
+}
+
+.cv-entry > a {
+  font-size: 1.08cqw;
+  font-style: italic;
+}
+
+.cv-entry ul,
+.skills-list {
+  margin: 0.45cqw 0 0;
+  padding-left: 1.1em;
+}
+
+.cv-entry li + li,
+.skills-list li + li {
+  margin-top: 0.34cqw;
+}
+
+.cv-stack {
+  display: grid;
+  gap: 1cqw;
+}
+
+.education p,
+.code-example p {
+  margin-bottom: 0.52cqw;
+}
+
+.education p:last-child {
+  margin-bottom: 0;
+}
+
+.code-example pre {
+  max-width: 100%;
+  margin: 0;
+  padding: 0.8cqw 0.9cqw;
+  overflow: hidden;
+  background: rgba(24, 7, 13, 0.72);
+  font-size: 0.92cqw;
+  line-height: 1.3;
+  white-space: pre;
+}
+
+.code-example {
+  grid-column: 1 / -1;
+}
+
+.projects-page__designs {
+  min-width: 0;
+}
+
+.projects-page__designs h3 {
+  margin: 0 0 0.8cqw;
+  font-size: 1.48cqw;
+  font-weight: 600;
+}
+
+.design-viewer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.design-slide,
+.design-slide figure {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.design-slide figure {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 0.65cqw;
+}
+
+.design-slide img,
+.design-slide video {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(24, 7, 13, 0.45);
+  object-fit: contain;
+}
+
+.design-slide figcaption {
+  font-size: 1.25cqw;
+  line-height: 1;
+}
+
+.design-selector {
+  display: flex;
+  gap: 1.5cqw;
+  margin-top: 1.1cqw;
+  border-top: 1px solid var(--line);
+}
+
+.design-selector button {
+  padding: 0.75cqw 0 0;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  color: var(--muted);
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.18cqw;
+}
+
+.design-selector button.is-active {
+  border-bottom-color: var(--text);
+  color: var(--text);
 }
 
 .work-ethic-page__navigation {
@@ -407,7 +593,7 @@ h1 {
   margin-bottom: 0;
 }
 
-.work-ethic-page__navigation a {
+.page-back {
   color: inherit;
   font-size: 3.2cqw;
   line-height: 0.6;
@@ -450,7 +636,7 @@ h1 {
   margin-top: 0.4em;
 }
 
-@keyframes reveal-work-ethic {
+@keyframes reveal-page {
   from {
     opacity: 0;
   }
@@ -466,7 +652,7 @@ h1 {
     text-decoration: underline;
   }
 
-  .work-ethic-page__navigation a:hover {
+  .page-back:hover {
     color: inherit;
     text-decoration: none;
   }
@@ -481,6 +667,7 @@ h1 {
     transition: none;
   }
 
+  .design-canvas.is-projects .projects-page,
   .design-canvas.is-work-ethic .work-ethic-page {
     animation: none;
   }
