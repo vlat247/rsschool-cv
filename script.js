@@ -1,15 +1,19 @@
+const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 const timeElement = document.querySelector("#almaty-time");
+const timeFormatter = new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Almaty",
+  hour: "2-digit",
+  minute: "2-digit",
+  hour12: false,
+});
 
 const updateAstanaTime = () => {
-  const now = new Date();
-  const formattedTime = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Asia/Almaty",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  }).format(now);
+  if (!timeElement) {
+    return;
+  }
 
-  timeElement.textContent = `${formattedTime}, GMT +5`;
+  const now = new Date();
+  timeElement.textContent = `${timeFormatter.format(now)}, GMT +5`;
   timeElement.dateTime = now.toISOString();
 };
 
@@ -17,55 +21,53 @@ updateAstanaTime();
 window.setInterval(updateAstanaTime, 30000);
 
 const designCanvas = document.querySelector(".design-canvas");
-const designSlides = [...document.querySelectorAll("[data-design-slide]")];
-const designSelectors = [...document.querySelectorAll("[data-design-index]")];
 const defaultPageTitle = document.title;
-let activeDesignIndex = 0;
+const projectHashes = new Set(["#projects", "#cv", "#design-work"]);
+let activeRoute = "home";
 
-const showDesign = (selectedIndex, shouldPlayVideo = true) => {
-  activeDesignIndex = selectedIndex;
+const getRoute = () => {
+  if (window.location.hash === "#work-ethic") {
+    return "work-ethic";
+  }
 
-  designSlides.forEach((slide, index) => {
-    const isActive = index === selectedIndex;
-    const video = slide.querySelector("video");
+  return projectHashes.has(window.location.hash) ? "projects" : "home";
+};
 
-    slide.hidden = !isActive;
-    slide.classList.toggle("is-active", isActive);
+const scrollToProjectSection = (hash) => {
+  const targetId = hash.slice(1);
+  const target = document.getElementById(targetId);
 
-    if (video) {
-      if (isActive && shouldPlayVideo) {
-        video.play().catch(() => {});
-      } else {
-        video.pause();
+  if (!target) {
+    return;
+  }
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      if (window.location.hash !== hash || getRoute() !== "projects") {
+        return;
       }
-    }
-  });
 
-  designSelectors.forEach((selector, index) => {
-    const isActive = index === selectedIndex;
-
-    selector.classList.toggle("is-active", isActive);
-    selector.setAttribute("aria-pressed", String(isActive));
+      target.scrollIntoView({ block: "start", behavior: "auto" });
+    });
   });
 };
 
-designSelectors.forEach((selector) => {
-  selector.addEventListener("click", () => {
-    showDesign(Number(selector.dataset.designIndex));
-  });
-});
-
 const updatePageView = () => {
-  const isWorkEthicPage = window.location.hash === "#work-ethic";
-  const isProjectsPage = window.location.hash === "#projects";
+  const previousRoute = activeRoute;
+  const nextRoute = getRoute();
+  const isProjectsPage = nextRoute === "projects";
+  const isWorkEthicPage = nextRoute === "work-ethic";
+  const currentHash = window.location.hash;
 
+  activeRoute = nextRoute;
+  document.documentElement.classList.toggle("is-projects-view", isProjectsPage);
+  document.body.classList.toggle("is-projects-view", isProjectsPage);
   designCanvas?.classList.toggle(
     "is-secondary-page",
     isWorkEthicPage || isProjectsPage,
   );
   designCanvas?.classList.toggle("is-work-ethic", isWorkEthicPage);
   designCanvas?.classList.toggle("is-projects", isProjectsPage);
-  showDesign(activeDesignIndex, isProjectsPage);
 
   if (isWorkEthicPage) {
     document.title = "My Work Ethic — Vladislav Solomonov";
@@ -73,6 +75,12 @@ const updatePageView = () => {
     document.title = "Projects — Vladislav Solomonov";
   } else {
     document.title = defaultPageTitle;
+  }
+
+  if (isProjectsPage) {
+    scrollToProjectSection(currentHash);
+  } else if (previousRoute === "projects") {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }
 };
 
@@ -83,7 +91,6 @@ const ditherCanvas = document.querySelector(".dither-background");
 
 if (ditherCanvas) {
   const context = ditherCanvas.getContext("2d", { alpha: false });
-  const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
   const palette = [
     [24, 7, 13],
     [59, 10, 23],
