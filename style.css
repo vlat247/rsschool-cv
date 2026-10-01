@@ -100,7 +100,7 @@ html.is-projects-view {
   min-height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-padding-top: calc(var(--project-header-height) + 1.5rem);
+  scroll-padding-top: 1.5rem;
 }
 
 body.is-projects-view {
@@ -556,15 +556,14 @@ body.is-projects-view .design-canvas {
 
 /* Projects page */
 body.is-projects-view .site-header {
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: auto;
   right: auto;
   left: auto;
-  z-index: 20;
   width: calc(100% - var(--project-gutter) - var(--project-gutter));
   height: var(--project-header-height);
   margin: 0 auto;
-  background: rgba(24, 7, 13, 0.97);
+  background: transparent;
 }
 
 body.is-projects-view .signature {
