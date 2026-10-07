@@ -602,8 +602,7 @@ body.is-projects-view .projects-page {
 .projects-intro {
   display: block;
   min-height: 0;
-  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2.75rem, 5vw, 4.5rem);
-  border-bottom: 1px solid var(--line);
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 0;
 }
 
 .projects-intro__heading {
@@ -614,11 +613,13 @@ body.is-projects-view .projects-page {
 }
 
 .projects-intro h2 {
+  min-width: 0;
   margin: 0;
-  font-size: clamp(3.25rem, 7vw, 5.5rem);
-  font-weight: 400;
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.2rem, 4.4vw, 4rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 .projects-intro .projects-intro__back {
@@ -627,16 +628,8 @@ body.is-projects-view .projects-page {
   line-height: 0.75;
 }
 
-.projects-intro__summary {
-  max-width: 42rem;
-  margin: 1.5rem 0 0;
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  line-height: 1.35;
-}
-
 .selected-projects,
-.cv-section,
-.design-work {
+.cv-section {
   padding: clamp(3rem, 6vw, 4.75rem) 0;
 }
 
@@ -653,8 +646,8 @@ body.is-projects-view .projects-page {
   letter-spacing: -0.025em;
 }
 
-.project-list {
-  border-bottom: 1px solid var(--line);
+.selected-projects .section-heading h3 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
 }
 
 .project-row {
@@ -788,18 +781,15 @@ body.is-projects-view .projects-page {
   margin-bottom: 0;
 }
 
-.design-work {
-  border-top: 1px solid var(--line);
-}
-
-.design-work > .section-heading {
-  margin-bottom: 1.75rem;
-}
-
 .design-work__list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.5rem 1.5rem;
+}
+
+.design-work__list > .project-row {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid var(--line);
 }
 
 .design-case,
@@ -811,7 +801,8 @@ body.is-projects-view .projects-page {
   border: 0;
 }
 
-.design-case--motion {
+.design-case--motion,
+.design-case--pomodoro {
   grid-column: 1 / -1;
 }
 
@@ -826,6 +817,7 @@ body.is-projects-view .projects-page {
 }
 
 .design-case__media {
+  display: block;
   overflow: hidden;
   border: 1px solid var(--line-soft);
   background: var(--project-ink);
@@ -835,12 +827,24 @@ body.is-projects-view .projects-page {
   aspect-ratio: 1280 / 725;
 }
 
+.design-case--minigames .design-case__media {
+  aspect-ratio: 2940 / 1664;
+}
+
+.design-case--chess .design-case__media {
+  aspect-ratio: 1280 / 724;
+}
+
 .design-case--honda .design-case__media {
   aspect-ratio: 1280 / 832;
 }
 
 .design-case--motion .design-case__media {
   aspect-ratio: 848 / 464;
+}
+
+.design-case--pomodoro .design-case__media {
+  aspect-ratio: 1280 / 661;
 }
 
 body.is-projects-view .design-case__media img,
@@ -854,6 +858,8 @@ body.is-projects-view .design-case__media video {
 .design-case__caption {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
   justify-content: space-between;
   min-width: 0;
   padding: 0.75rem 0 0;
@@ -861,6 +867,7 @@ body.is-projects-view .design-case__media video {
 }
 
 .design-case__title {
+  margin: 0;
   font-size: clamp(1.35rem, 2vw, 1.8rem);
   font-weight: 500;
   line-height: 1;
@@ -870,6 +877,25 @@ body.is-projects-view .design-case__media video {
   margin: 0;
   color: var(--muted);
   font-size: 1rem;
+}
+
+.design-case__description,
+.design-case__details {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.design-case__details {
+  color: var(--muted);
+}
+
+.design-case__link {
+  flex-basis: 100%;
+  font-size: 1rem;
+  line-height: 1.45;
+  text-underline-offset: 0.25em;
 }
 
 body.is-projects-view .hero-meta {
@@ -922,20 +948,15 @@ body.is-projects-view .rs-course img {
 
   .projects-intro {
     min-height: 0;
-    padding: 2.5rem 0;
+    padding: 2.5rem 0 0;
   }
 
   .projects-intro h2 {
-    font-size: clamp(2.9rem, 14vw, 4.25rem);
-  }
-
-  .projects-intro__summary {
-    font-size: 1.1rem;
+    font-size: clamp(2.2rem, 6.5vw, 2.75rem);
   }
 
   .selected-projects,
-  .cv-section,
-  .design-work {
+  .cv-section {
     padding: 3rem 0;
   }
 
@@ -957,7 +978,8 @@ body.is-projects-view .rs-course img {
   .cv-block--programs,
   .cv-block--skills,
   .cv-block--education,
-  .design-case--motion {
+  .design-case--motion,
+  .design-case--pomodoro {
     grid-column: 1;
     grid-row: auto;
   }

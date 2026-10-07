@@ -278,6 +278,9 @@ if (ditherCanvas) {
               proximity * proximity * (3 - 2 * proximity);
             const falloff =
               softFalloff * softFalloff * interactionStrength;
+            const coreBoost = softFalloff * softFalloff;
+            const warpInfluence = falloff * (1 + coreBoost * 0.85);
+            const densityInfluence = falloff * (1 + coreBoost * 1.65);
             const inverseDistance = distance > 0.001 ? 1 / distance : 0;
             const radialX = localX * inverseDistance;
             const radialY = localY * inverseDistance;
@@ -289,8 +292,10 @@ if (ditherCanvas) {
               1.35,
             );
 
-            const inwardPull = falloff * (0.08 + spiralDensity * 0.06);
-            const spiralTurn = falloff * (0.09 + spiralDensity * 0.09);
+            const inwardPull =
+              warpInfluence * (0.08 + spiralDensity * 0.06);
+            const spiralTurn =
+              warpInfluence * (0.09 + spiralDensity * 0.09);
             const motionPull = falloff * 0.04;
 
             sampleHorizontal +=
@@ -299,7 +304,7 @@ if (ditherCanvas) {
             sampleVertical +=
               (radialY * inwardPull + radialX * spiralTurn + flowY * motionPull) *
               radiusVertical;
-            cursorInfluence = falloff;
+            cursorInfluence = densityInfluence;
           }
         }
 

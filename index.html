@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Vladislav Solomonov — frontend developer and mathematics student in Astana, Kazakhstan.">
   <title>Vladislav Solomonov — Frontend Developer</title>
-  <link rel="stylesheet" href="style.css?v=20261001-7">
-  <script src="script.js?v=20261001-7" defer></script>
+  <link rel="stylesheet" href="style.css?v=20261008-5">
+  <script src="script.js?v=20261008-5" defer></script>
 </head>
 <body>
   <main id="main-content" class="cv">
@@ -74,33 +74,105 @@
         <div class="projects-page__dossier">
           <header class="projects-intro" id="projects">
             <div class="projects-intro__heading">
-              <h2 id="projects-title">Projects &amp; CV</h2>
+              <h2 id="projects-title">A concise record of my projects, technical experience, education, and design work.</h2>
               <a class="page-back projects-intro__back" href="#" aria-label="Back to collage">-&gt;</a>
             </div>
-            <p class="projects-intro__summary">
-              A concise record of my projects, technical experience, education, and design work.
-            </p>
           </header>
 
-          <section class="selected-projects" aria-labelledby="selected-projects-title">
+          <section class="selected-projects" id="design-work" aria-labelledby="selected-projects-title">
             <div class="section-heading">
-              <h3 id="selected-projects-title">Selected projects</h3>
+              <h3 id="selected-projects-title">Projects &amp; design</h3>
             </div>
 
-            <div class="project-list">
-              <article class="project-row project-row--featured">
-                <div class="project-row__heading">
-                  <h4>Pomodoro Tracker</h4>
-                  <p>Hack Club Neighborhood Program · Summer 2025</p>
-                </div>
-                <p class="project-row__description">
-                  Built as the program deliverable while completing 75+ documented coding hours.
-                </p>
-                <a class="project-row__link" href="https://github.com/vlat247/pomodoro-tracker" target="_blank" rel="noopener noreferrer">
-                  View repository <span aria-hidden="true">↗</span>
+            <div class="design-work__list">
+              <figure class="design-case design-case--minigames">
+                <a class="design-case__media" href="https://vlat247.github.io/minigames/" target="_blank" rel="noopener noreferrer" aria-label="View MiniGames live site">
+                  <img src="public/projects/minigames.png" alt="MiniGames homepage with a game library link and illustrated gaming room" width="2940" height="1664" loading="lazy" decoding="async">
                 </a>
-              </article>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">
+                    <a href="https://vlat247.github.io/minigames/" target="_blank" rel="noopener noreferrer">MiniGames <span aria-hidden="true">↗</span></a>
+                  </h4>
+                  <span class="design-case__type">Web app</span>
+                  <p class="design-case__description">Responsive mini-games discovery SPA with a filterable game library, game details, and leaderboard.</p>
+                  <p class="design-case__details">TypeScript · Sass · Vite · REST API</p>
+                  <a class="design-case__link" href="https://github.com/vlat247/minigames" target="_blank" rel="noopener noreferrer">
+                    View repository <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+              </figure>
 
+              <figure class="design-case design-case--chess">
+                <a class="design-case__media" href="https://magic-chess-nfc26.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="View Arcane Chess live site">
+                  <img src="public/projects/arcane-chess.png" alt="Arcane Chess homepage with a Chess and Magic title, pixel-art spells, and links to play or explore modes" width="1280" height="724" loading="lazy" decoding="async">
+                </a>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">
+                    <a href="https://magic-chess-nfc26.vercel.app" target="_blank" rel="noopener noreferrer">Arcane Chess <span aria-hidden="true">↗</span></a>
+                  </h4>
+                  <span class="design-case__type">Web app</span>
+                  <p class="design-case__description">Fantasy chess website with a pixel-art interface for classic and magic game modes.</p>
+                  <p class="design-case__details">Next.js · React · Vercel</p>
+                </figcaption>
+              </figure>
+
+              <figure class="design-case design-case--vision">
+                <a class="design-case__media" href="https://vision247.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="View Vision live site">
+                  <img src="public/designs/vision.png" alt="Vision website interface design" loading="lazy" decoding="async">
+                </a>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">
+                    <a href="https://vision247.vercel.app" target="_blank" rel="noopener noreferrer">Vision <span aria-hidden="true">↗</span></a>
+                  </h4>
+                  <span class="design-case__type">Interface concept</span>
+                  <a class="design-case__link" href="https://github.com/vlat247/30-websites" target="_blank" rel="noopener noreferrer" aria-label="View Vision repository">
+                    View repository <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+              </figure>
+
+              <figure class="design-case design-case--honda">
+                <div class="design-case__media">
+                  <img src="public/designs/honda.png" alt="Honda editorial website interface design" loading="lazy" decoding="async">
+                </div>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">Honda</h4>
+                  <span class="design-case__type">Editorial concept</span>
+                  <a class="design-case__link" href="https://github.com/vlat247/30-websites" target="_blank" rel="noopener noreferrer" aria-label="View Honda repository">
+                    View repository <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+              </figure>
+
+              <figure class="design-case design-case--motion">
+                <div class="design-case__media">
+                  <video controls loop muted playsinline preload="metadata" aria-label="Hero's Journey motion interface concept">
+                    <source src="public/designs/motion-design.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">Hero's Journey</h4>
+                  <span class="design-case__type">Motion concept</span>
+                  <a class="design-case__link" href="https://github.com/vlat247/30-websites" target="_blank" rel="noopener noreferrer" aria-label="View Hero's Journey repository">
+                    View repository <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+              </figure>
+
+              <figure class="design-case design-case--pomodoro">
+                <a class="design-case__media" href="https://github.com/vlat247/pomodoro-tracker" target="_blank" rel="noopener noreferrer" aria-label="View Pomodoro Tracker repository">
+                  <img src="public/projects/pomodoro-tracker.png" alt="Pomodoro garden app with timer controls and a pixel-art vegetable garden on a blue water background" width="1280" height="661" loading="lazy" decoding="async">
+                </a>
+                <figcaption class="design-case__caption">
+                  <h4 class="design-case__title">Pomodoro Tracker</h4>
+                  <span class="design-case__type">My first project</span>
+                  <p class="design-case__description">Built as the program deliverable while completing 75+ documented coding hours.</p>
+                  <p class="design-case__details">Hack Club Neighborhood Program · Summer 2025</p>
+                  <a class="design-case__link" href="https://github.com/vlat247/pomodoro-tracker" target="_blank" rel="noopener noreferrer">
+                    View repository <span aria-hidden="true">↗</span>
+                  </a>
+                </figcaption>
+              </figure>
             </div>
           </section>
 
@@ -155,45 +227,6 @@
             </div>
           </section>
 
-          <section class="design-work" id="design-work" aria-labelledby="designs-title">
-            <div class="section-heading">
-              <h3 id="designs-title">Design work</h3>
-            </div>
-
-            <div class="design-work__list">
-              <figure class="design-case design-case--vision">
-                <div class="design-case__media">
-                  <img src="public/designs/vision.png" alt="Vision website interface design" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="design-case__caption">
-                  <span class="design-case__title">Vision</span>
-                  <span class="design-case__type">Interface concept</span>
-                </figcaption>
-              </figure>
-
-              <figure class="design-case design-case--honda">
-                <div class="design-case__media">
-                  <img src="public/designs/honda.png" alt="Honda editorial website interface design" loading="lazy" decoding="async">
-                </div>
-                <figcaption class="design-case__caption">
-                  <span class="design-case__title">Honda</span>
-                  <span class="design-case__type">Editorial concept</span>
-                </figcaption>
-              </figure>
-
-              <figure class="design-case design-case--motion">
-                <div class="design-case__media">
-                  <video controls loop muted playsinline preload="metadata" aria-label="Hero's Journey motion interface concept">
-                    <source src="public/designs/motion-design.mp4" type="video/mp4">
-                  </video>
-                </div>
-                <figcaption class="design-case__caption">
-                  <span class="design-case__title">Hero's Journey</span>
-                  <span class="design-case__type">Motion concept</span>
-                </figcaption>
-              </figure>
-            </div>
-          </section>
         </div>
       </section>
 
